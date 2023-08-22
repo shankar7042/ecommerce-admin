@@ -1,6 +1,7 @@
+import { redirect } from "next/navigation";
+import Navbar from "@/components/Navbar";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({
   children,
@@ -30,7 +31,7 @@ export default async function DashboardLayout({
 
   return (
     <>
-      <div>This is navbar</div>
+      <Navbar />
       {children}
     </>
   );
