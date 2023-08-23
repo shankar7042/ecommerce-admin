@@ -23,6 +23,8 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { AlertModal } from "./modals/alert-modal";
+import ApiAlert from "./ApiAlert";
+import { useOrigin } from "@/hooks/use-origin";
 
 interface SettingsFormProps {
   initialData: Store;
@@ -40,6 +42,8 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
 
   const params = useParams();
   const router = useRouter();
+
+  const origin = useOrigin();
 
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(formSchema),
@@ -122,6 +126,12 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
+      <Separator />
+      <ApiAlert
+        title="test"
+        description={`${origin}/api/${params.storeId}`}
+        variant="public"
+      />
     </Fragment>
   );
 };
