@@ -65,14 +65,27 @@ model Store {
 
   user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   billboards Billboard[] @relation("StoreToBillboard")
+  categories Category[]  @relation("StoreToCategory")
 }
 
 model Billboard {
-  id        String   @id @default(cuid())
-  storeId   String
-  store     Store    @relation("StoreToBillboard", fields: [storeId], references: [id])
-  label     String
-  imageUrl  String
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String     @id @default(cuid())
+  storeId    String
+  store      Store      @relation("StoreToBillboard", fields: [storeId], references: [id])
+  label      String
+  imageUrl   String
+  createAt   DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  categories Category[]
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  storeId     String
+  store       Store     @relation("StoreToCategory", fields: [storeId], references: [id])
+  billboardId String
+  billboard   Billboard @relation(fields: [billboardId], references: [id])
+  name        String
+  createAt    DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
