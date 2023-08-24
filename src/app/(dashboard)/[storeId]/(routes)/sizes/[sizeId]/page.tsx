@@ -1,7 +1,7 @@
 import SizeForm from "@/components/SizeForm";
 import { db } from "@/lib/db";
 
-const BillboardPage = async ({ params }: { params: { sizeId: string } }) => {
+const SizePage = async ({ params }: { params: { sizeId: string } }) => {
   const size = await db.size.findUnique({
     where: {
       id: params.sizeId,
@@ -17,4 +17,4 @@ const BillboardPage = async ({ params }: { params: { sizeId: string } }) => {
   );
 };
 
-export default BillboardPage;
+export default SizePage;
