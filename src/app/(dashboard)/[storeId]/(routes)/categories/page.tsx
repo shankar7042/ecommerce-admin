@@ -17,7 +17,7 @@ const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
     },
   });
 
-  const formattedBillboards: CategoriesColumn[] = categories.map((item) => ({
+  const formattedCategories: CategoriesColumn[] = categories.map((item) => ({
     id: item.id,
     name: item.name,
     billboardLabel: item.billboard.label,
@@ -27,7 +27,7 @@ const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <CategoryClient data={formattedBillboards} />
+        <CategoryClient data={formattedCategories} />
       </div>
     </div>
   );
